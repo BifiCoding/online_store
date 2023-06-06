@@ -8,6 +8,8 @@ import {Button} from "react-bootstrap";
 import {observer} from "mobx-react-lite";
 import Container from "react-bootstrap/Container";
 import {useHistory} from 'react-router-dom'
+import Logo from '../img/Logo.png'
+
 const NavBar = observer(() => {
     const {user} = useContext(Context)
     const history = useHistory()
@@ -20,7 +22,9 @@ const NavBar = observer(() => {
     return (
         <Navbar bg="dark" variant="dark">
             <Container>
-                <NavLink style={{color:'white'}} to={SHOP_ROUTE}>Товари</NavLink>
+                <NavLink style={{color:'white'}} to={SHOP_ROUTE}>
+                    <img src={Logo}/>
+                </NavLink>
                 {user.isAuth ?
                     <Nav className="ml-auto" style={{color: 'white'}}>
                         <Button
@@ -39,7 +43,7 @@ const NavBar = observer(() => {
                     </Nav>
                     :
                     <Nav className="ml-auto" style={{color: 'white'}}>
-                        <Button variant={"outline-light"} onClick={() => history.push(LOGIN_ROUTE)}>Авторизация</Button>
+                        <Button variant={"outline-light"} onClick={() => history.push(LOGIN_ROUTE)}>Авторизація</Button>
                     </Nav>
                 }
             </Container>
